@@ -49,7 +49,7 @@
                                                 <span class="badge bg-primary">PENDING</span>
                                             @elseif($ticket->status == 'wip')
                                                 <span class="badge bg-secondary">WORK IN PROGRESS</span>
-                                            @elseif($ticket->status == 'Completed')
+                                            @elseif($ticket->status == 'completed')
                                                 <span class="badge bg-success">COMPLETED</span>
                                             @endif
                                         </td>
