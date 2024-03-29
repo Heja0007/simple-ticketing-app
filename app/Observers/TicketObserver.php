@@ -45,16 +45,24 @@ class TicketObserver
             $comment = '';
             $previousStatus = $ticket['status'];
             $currentStatus = $ticket['status'];
+            if (array_key_exists('title', $changes)) {
+                $previousTitle = $ticket->getOriginal('title');
+                $comment = $user . ' changed  title from ' . $previousTitle . ' to ' . $changes['title'] . '. ';
+            }
+            if (array_key_exists('comment', $changes)) {
+                $previousComment = $ticket->getOriginal('comment');
+                $comment = $user . ' changed  title from ' . $previousComment . ' to ' . $changes['comment'] . '. ';
+            }
             if (array_key_exists('status', $changes)) {
                 $previousStatus = $ticket->getOriginal('status');
                 $comment .= $user . ' changed  status from ' . $previousStatus . ' to ' . $changes['status'] . '. ';
             }
             if (array_key_exists('assigned_user', $changes)) {
-                if ($changes['assigned_user_id'] === null) {
+                if ($changes['assigned_user'] === null) {
                     $comment .= $user . '  removed the assigned User. ';
                 } else {
                     $oldAssignedUser = $ticket->getOriginal('assigned_user');
-                    $comment .= $user . '  changed  the assigned user from ' . $oldAssignedUser . ' to ' . $changes['assigned_user'] . '. ';
+                    $comment .= $user . '  changed  the assigned user from user id:' . $oldAssignedUser . ' to user id: ' . $changes['assigned_user'] . '. ';
                 }
             }
             if (array_key_exists('due_date', $changes)) {

@@ -32,7 +32,7 @@ class TicketController extends Controller
 
     public function deletedIndex(Request $request)
     {
-        $limit = $request->get('limit', 10);
+        $limit = $request->get('limit', 2);
         $tickets = $this->ticketService->getDeletedTickets($limit);
         return view('admin.ticket.deleted-index')->with('tickets', $tickets);
     }

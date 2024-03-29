@@ -34,7 +34,7 @@
                                     <th>Status</th>
                                     <th>Created By</th>
                                     <th>Created At</th>
-                                    <th>Updated At</th>
+                                    <th>Deleted At</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -55,7 +55,7 @@
                                         </td>
                                         <td>{{ $ticket->createdBy->name }}</td>
                                         <td>{{ $ticket->created_at }}</td>
-                                        <td>{{ $ticket->updated_at }}</td>
+                                        <td>{{ $ticket->deleted_at }}</td>
                                         <td>
                                             <a href="{{ route('admin.ticket.view', $ticket->id) }}"
                                                class="btn btn-primary">View</a>
@@ -70,7 +70,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{ $tickets->links() }}
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    {{ $tickets->links() }}
+                                </ul>
+                            </nav>
                         @endif
                     </div>
                 </div>

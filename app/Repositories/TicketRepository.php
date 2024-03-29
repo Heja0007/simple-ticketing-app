@@ -24,7 +24,7 @@ class TicketRepository implements TicketInterface
                 'createdBy' => function ($query) {
                     $query->select('id', 'name');
                 }
-            ])
+            ])->orderBy('id', 'desc')
             ->paginate($limit);
     }
 
@@ -38,7 +38,7 @@ class TicketRepository implements TicketInterface
                 'createdBy' => function ($query) {
                     $query->select('id', 'name');
                 }
-            ])
+            ])->orderBy('deleted_at', 'desc')
             ->paginate($limit);
     }
 
